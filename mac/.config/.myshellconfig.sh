@@ -22,8 +22,6 @@ setopt HIST_IGNORE_ALL_DUPS  # Remove older duplicate entries, keeping only the 
 setopt HIST_IGNORE_SPACE     # Don’t store commands that start with a space
 setopt HIST_REDUCE_BLANKS    # Remove extra spaces from commands before saving
 setopt HIST_SAVE_NO_DUPS     # Don’t save duplicate entries to the history file
-
-
 # ~~~~~~~~~~~~~~~ zsh mini config  ~~~~~~~~~~~~~~~~~~~~~~~~
 zsh_basic_config(){
     autoload -U colors && colors
@@ -197,7 +195,6 @@ chpwd() {
 		tmux rename-window "$(basename "$PWD")"
 		 fi
 	}
-
 tstart() {
     tmux new-session -A -s "$result"
 }
@@ -247,7 +244,6 @@ alias h="history | grep "
 # Search running processes
 alias p="ps aux | grep "
 alias topcpu="/bin/ps -eo pcpu,pid,user,args | sort -k 1 -r | head -10"
-
 # ~~~~~~~~~~~~~~fzf setup~~~~~~~~~~~~~~~~~~~~~~~~~
 if command -v fzf &>/dev/null; then    
         ### SET FZF DEFAULTS
@@ -263,13 +259,10 @@ fi
 # ~~~~~~~~~~~~~~~info~~~~~~~~~~~~~~~~~~~~~~~~
 if [[ -z "$TMUX" ]]; then
     if command -v fastfetch &>/dev/null; then    
-        fastfetch
         alias fetch=fastfetch
     elif command -v neofetch &>/dev/null; then
-       neofetch
         alias fetch=neofetch
     else
-       myip
     fi   
 fi
 # ~~~~~~~~~~~~~~~clear ~~~~~~~~~~~~~~~~~~~~~~~

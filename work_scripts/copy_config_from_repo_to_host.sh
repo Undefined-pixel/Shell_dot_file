@@ -1,15 +1,15 @@
 #!/bin/bash
 
-rsync -av $HOME/repo/config_file/linux/.config/zed/settings.json $HOME/.config/zed/settings.json
-rsync -av $HOME/repo/config_file/linux/.config/zed/keymap.json $HOME/.config/zed/keymap.json
-rsync -av $HOME/repo/config_file/linux/.config/.myshellconfig.sh $HOME/.config/.myshellconfig.sh
-rsync -av $HOME/repo/config_file/linux/.config/fastfetch/ $HOME/.config/fastfetch
-rsync -av $HOME/repo/config_file/linux/.config/nvim/ $HOME/.config/nvim
+rsync -av $HOME/repo/Shell_dot_file/linux/.config/zed/settings.json $HOME/.config/zed/settings.json
+rsync -av $HOME/repo/Shell_dot_file/linux/.config/zed/keymap.json $HOME/.config/zed/keymap.json
+rsync -av $HOME/repo/Shell_dot_file/linux/.config/.myshellconfig.sh $HOME/.config/.myshellconfig.sh
+rsync -av $HOME/repo/Shell_dot_file/linux/.config/fastfetch/ $HOME/.config/fastfetch
+rsync -av $HOME/repo/Shell_dot_file/linux/.config/nvim/ $HOME/.config/nvim
 
 OS=$(uname)
 if [[ "$OS" == "Darwin" ]]; then
-  rsync -av $HOME/repo/config_file/mac/.config/sketchybar/ $HOME/.config/sketchybar
-  rsync -av $HOME/repo/config_file/mac/.config/borders/ $HOME/.config/borders
+  rsync -av $HOME/repo/Shell_dot_file/mac/.config/sketchybar/ $HOME/.config/sketchybar
+  rsync -av $HOME/repo/Shell_dot_file/mac/.config/borders/ $HOME/.config/borders
 
 fi
 

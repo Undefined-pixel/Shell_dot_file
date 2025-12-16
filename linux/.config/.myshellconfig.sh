@@ -27,9 +27,20 @@ zsh_basic_config(){
     autoload -U colors && colors
     autoload -Uz vcs_info
     precmd() { vcs_info }
-    zstyle ':vcs_info:git:*' formats '%b '
+    # Format git branch with magenta text (matching bash)
+    zstyle ':vcs_info:git:*' formats '%K{#1E1E1E}%F{magenta} ⎇ %b %k'
+    zstyle ':vcs_info:*' enable git
     setopt PROMPT_SUBST
-    PROMPT='%F{green}%*%f %F{blue}%~%f %F{red}${vcs_info_msg_0_}%f$ '
+
+    # Two-line prompt with colored text matching bash colors
+    # First line: User (green), Directory (blue), Git branch (magenta), Time (white)
+    PROMPT=$'\n''%K{#1E1E1E}%F{green} %n %k'
+    PROMPT+='%K{#1E1E1E}%F{blue} %~ %k'
+    PROMPT+='${vcs_info_msg_0_}'
+    PROMPT+='%K{#1E1E1E}%F{blue} $(date +%H:%M) %k'
+    # Second line: Prompt symbol in white
+    PROMPT+=$'\n''%F{blue}❯%f '
+
 }
 
 # ~~~~~~~~~~~~~~~colors for simple shell ~~~~~~~~~~~~~~~~~~~~~~~~

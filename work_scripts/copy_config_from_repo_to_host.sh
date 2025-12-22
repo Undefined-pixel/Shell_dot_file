@@ -5,6 +5,7 @@ rsync -av $HOME/repo/Shell_dot_file/linux/.config/zed/keymap.json $HOME/.config/
 rsync -av $HOME/repo/Shell_dot_file/linux/.config/.myshellconfig.sh $HOME/.config/.myshellconfig.sh
 rsync -av $HOME/repo/Shell_dot_file/linux/.config/fastfetch/ $HOME/.config/fastfetch
 rsync -av $HOME/repo/Shell_dot_file/linux/.config/nvim/ $HOME/.config/nvim
+rsync -av $HOME/repo/Shell_dot_file/linux/.config/kitty/ $HOME/.config/kitty
 
 OS=$(uname)
 if [[ "$OS" == "Darwin" ]]; then

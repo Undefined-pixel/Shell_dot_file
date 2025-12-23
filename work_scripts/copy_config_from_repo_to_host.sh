@@ -7,6 +7,7 @@ rsync -av $HOME/repo/Shell_dot_file/linux/.config/fastfetch/ $HOME/.config/fastf
 rsync -av $HOME/repo/Shell_dot_file/linux/.config/nvim/ $HOME/.config/nvim
 rsync -av $HOME/repo/Shell_dot_file/linux/.config/kitty/ $HOME/.config/kitty
 rsync -av $HOME/repo/Shell_dot_file/linux/.config/wezterm/ $HOME/.config/wezterm
+rsync -av $HOME/repo/Shell_dot_file/linux/.config/i3/ $HOME/.config/i3
 
 OS=$(uname)
 if [[ "$OS" == "Darwin" ]]; then

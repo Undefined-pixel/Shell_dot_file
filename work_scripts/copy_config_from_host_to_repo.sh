@@ -17,6 +17,9 @@ rsync -av $HOME/.config/nvim $HOME/repo/Shell_dot_file/linux/.config/nvim/
 rsync -av $HOME/.config/kitty $HOME/repo/Shell_dot_file/linux/.config/kitty/
 rsync -av $HOME/.config/wezterm/ $HOME/repo/Shell_dot_file/linux/.config/wezterm/
 rsync -av $HOME/.config/i3/ $HOME/repo/Shell_dot_file/linux/.config/i3/
+rsync -av $HOME/.config/tmux/ $HOME/repo/Shell_dot_file/linux/.config/tmux/
+
+
 
 OS=$(uname)
 if [[ "$OS" == "Darwin" ]]; then

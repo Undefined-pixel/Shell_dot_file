@@ -39,6 +39,12 @@ return {
 		--        cwd = '~'
 		--      },
 		--    },
+		-- Strg + '+' zum Vergrößern
+		{ key = "+", mods = "CTRL", action = wezterm.action.IncreaseFontSize },
+		-- Strg + '-' zum Verkleinern
+		{ key = "-", mods = "CTRL", action = wezterm.action.DecreaseFontSize },
+		-- Strg + 0 zum Zurücksetzen
+		{ key = "0", mods = "CTRL", action = wezterm.action.ResetFontSize },
 		{
 			key = "PageUp",
 			mods = "SHIFT",
@@ -156,11 +162,10 @@ return {
 	scrollback_lines = 999999,
 	enable_scroll_bar = false,
 	adjust_window_size_when_changing_font_size = false,
-	font = wezterm.font("Hack Nerd Font Mono"),
 	--font = wezterm.font_with_fallback({ "Hack", "Twemoji" }),
 	font_size = 12,
 	force_reverse_video_cursor = false,
-	color_scheme = "Catppuccin Macchiato",
+	-- color_scheme = "Catppuccin Macchiato",
 	--  default_cursor_style = 'BlinkingBlock',
 	--  cursor_blink_rate = 500,
 	--  animation_fps = 100,

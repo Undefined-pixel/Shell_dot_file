@@ -267,6 +267,9 @@ if command -v fzf &>/dev/null; then
         source <(fzf --zsh)
         alias fzvim='fzf --multi --preview="bat --color=always --style=full {}" --bind "space:toggle-preview,enter:execute(vim {} < /dev/tty)"'
 fi
+
+
+
 # ~~~~~~~~~~~~~~~info~~~~~~~~~~~~~~~~~~~~~~~~
 if [[ -z "$TMUX" ]]; then
     if command -v fastfetch &>/dev/null; then    

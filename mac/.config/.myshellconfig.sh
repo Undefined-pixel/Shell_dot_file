@@ -27,9 +27,20 @@ zsh_basic_config(){
     autoload -U colors && colors
     autoload -Uz vcs_info
     precmd() { vcs_info }
-    zstyle ':vcs_info:git:*' formats '%b '
+    # Format git branch with magenta text (matching bash)
+    zstyle ':vcs_info:git:*' formats '%K{#1E1E1E}%F{magenta} ⎇ %b %k'
+    zstyle ':vcs_info:*' enable git
     setopt PROMPT_SUBST
-    PROMPT='%F{green}%*%f %F{blue}%~%f %F{red}${vcs_info_msg_0_}%f$ '
+
+    # Two-line prompt with colored text matching bash colors
+    # First line: User (green), Directory (blue), Git branch (magenta), Time (white)
+    PROMPT=$'\n''%K{#1E1E1E}%F{green} %n %k'
+    PROMPT+='%K{#1E1E1E}%F{blue} %~ %k'
+    PROMPT+='${vcs_info_msg_0_}'
+    PROMPT+='%K{#1E1E1E}%F{blue} $(date +%H:%M) %k'
+    # Second line: Prompt symbol in white
+    PROMPT+=$'\n''%F{blue}❯%f '
+
 }
 
 # ~~~~~~~~~~~~~~~colors for simple shell ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -245,17 +256,52 @@ alias h="history | grep "
 alias p="ps aux | grep "
 alias topcpu="/bin/ps -eo pcpu,pid,user,args | sort -k 1 -r | head -10"
 # ~~~~~~~~~~~~~~fzf setup~~~~~~~~~~~~~~~~~~~~~~~~~
-if command -v fzf &>/dev/null; then    
-        ### SET FZF DEFAULTS
-        export FZF_DEFAULT_OPTS="--layout=reverse --exact --border=bold --border=rounded --margin=3% --color=dark"
-        ### FZF ###
-        # Enables the following keybindings:
-        # CTRL-t = fzf select
-        # CTRL-r = fzf history doesnt work on mac
-        # ALT-c  = fzf cd ->doesnt work on mac
-        source <(fzf --zsh)
-        alias fzvim='fzf --multi --preview="bat --color=always --style=full {}" --bind "space:toggle-preview,enter:execute(vim {} < /dev/tty)"'
+if command -v fzf &>/dev/null; then
+    ### SET FZF DEFAULTS
+    export FZF_DEFAULT_OPTS="--layout=reverse --exact --border=bold --border=rounded --margin=3% --color=dark"
+
+    # fd benutzen falls vorhanden, sonst find
+    if command -v fd &>/dev/null; then
+        export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git'
+        export FZF_CTRL_T_COMMAND='fd --type f --hidden --follow --exclude .git'
+    else
+        export FZF_DEFAULT_COMMAND='find . -type f -not -path "*/.git/*"'
+        export FZF_CTRL_T_COMMAND='find . -type f -not -path "*/.git/*"'
+    fi
+
+    ### FZF ###
+    source <(fzf --zsh)
+
+    ### CTRL-T: open selected file in preferred editor ###
+    _fzf_open_file() {
+        local preferred_editor="nvim"
+
+        if [[ -n "$preferred_editor" ]] && command -v "$preferred_editor" &>/dev/null; then
+            local editor="$preferred_editor"
+        elif [[ -n "$EDITOR" ]] && command -v "$EDITOR" &>/dev/null; then
+            local editor="$EDITOR"
+        elif [[ -n "$VISUAL" ]] && command -v "$VISUAL" &>/dev/null; then
+            local editor="$VISUAL"
+        else
+            local editor="vi"
+        fi
+
+        local file
+        file=$(fzf --preview="bat --color=always --style=full {}" \
+                   --bind "space:toggle-preview" \
+                   --prompt="  " \
+                   --query="" < /dev/tty) || return
+
+        [[ -n "$file" ]] && $editor "$file"
+    }
+
+    # Nach source <(fzf --zsh) überschreiben
+    zle -N _fzf_open_file_widget _fzf_open_file
+    bindkey '^T' _fzf_open_file_widget
 fi
+
+
+
 # ~~~~~~~~~~~~~~~info~~~~~~~~~~~~~~~~~~~~~~~~
 if [[ -z "$TMUX" ]]; then
     if command -v fastfetch &>/dev/null; then    

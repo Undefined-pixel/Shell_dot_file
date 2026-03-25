@@ -165,7 +165,7 @@ return {
 	--font = wezterm.font_with_fallback({ "Hack", "Twemoji" }),
 	font_size = 12,
 	force_reverse_video_cursor = false,
-	-- color_scheme = "Catppuccin Macchiato",
+	color_scheme = "Catppuccin Macchiato",
 	--  default_cursor_style = 'BlinkingBlock',
 	--  cursor_blink_rate = 500,
 	--  animation_fps = 100,

@@ -3,9 +3,21 @@
 # make sure it's executable with:
 # chmod +x ~/.config/sketchybar/plugins/aerospace.sh
 
+#!/usr/bin/env bash
+FOCUSED_WORKSPACE=$(aerospace list-workspaces --focused)
+
 if [ "$1" = "$FOCUSED_WORKSPACE" ]; then
-  sketchybar --set $NAME background.color=0xff003547 label.shadow.drawing=on icon.shadow.drawing=on background.border_width=2
-# background.color=0x88FF00FF
+  # Aktiver Workspace — helles Grau, dunkler Text
+  sketchybar --set space.$1 \
+    background.color=0xffaaaaaa \
+    background.drawing=on \
+    icon.color=0xff2b2b2b \
+    label.color=0xff2b2b2b
 else
-  sketchybar --set $NAME background.color=0x44FFFFFF label.shadow.drawing=off icon.shadow.drawing=off background.border_width=0
+  # Inaktiver Workspace — transparent wie die Bar
+  sketchybar --set space.$1 \
+    background.color=0x00000000 \
+    background.drawing=off \
+    icon.color=0xffaaaaaa \
+    label.color=0xffaaaaaa
 fi

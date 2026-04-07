@@ -1,0 +1,13 @@
+#!/bin/bash
+
+get_title() {
+    xprop -id "$(xprop -root _NET_ACTIVE_WINDOW | awk '{print $5}')" _NET_WM_NAME 2>/dev/null | sed 's/_NET_WM_NAME(UTF8_STRING) = "//;s/"$//' | cut -c1-50
+}
+
+# Print initial title
+get_title
+
+# Subscribe to window and workspace events
+i3-msg -t subscribe -m '["window","workspace"]' 2>/dev/null | while read -r _; do
+    get_title
+done

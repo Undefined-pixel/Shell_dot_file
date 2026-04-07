@@ -110,6 +110,9 @@ bindcode $mod+Shift+90   move container to workspace  $ws10
 # terminal
 bindsym $mod+Return exec --no-startup-id wezterm
 
+# browser
+bindsym $mod+Shift+b exec --no-startup-id brave
+
 # kill focused window
 bindsym $mod+q kill
 
@@ -230,13 +233,6 @@ bindsym XF86AudioPrev exec --no-startup-id playerctl previous
 ##################
 # Window rules   #
 ##################
-
-# auto focus
-for_window [class=Xfce4-terminal] focus
-for_window [class=(?i)firefox] focus
-for_window [class=Thunar] focus
-for_window [class=Thunderbird] focus
-
 # floating
 for_window [class="Yad" instance="yad"] floating enable
 for_window [class="Galculator" instance="galculator"] floating enable
@@ -296,7 +292,6 @@ bar {
 #############
 # Autostart #
 #############
-
 exec_always $HOME/.config/i3/scripts/import-gsettings
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec --no-startup-id dex --autostart --environment i3

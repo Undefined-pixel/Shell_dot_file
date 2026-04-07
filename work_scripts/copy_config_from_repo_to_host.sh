@@ -1,7 +1,5 @@
 #!/bin/bash
 
-rsync -av $HOME/repo/Shell_dot_file/linux/.config/zed/settings.json $HOME/.config/zed/settings.json
-rsync -av $HOME/repo/Shell_dot_file/linux/.config/zed/keymap.json $HOME/.config/zed/keymap.json
 rsync -av $HOME/repo/Shell_dot_file/linux/.config/.myshellconfig.sh $HOME/.config/.myshellconfig.sh
 rsync -av $HOME/repo/Shell_dot_file/linux/.config/fastfetch/ $HOME/.config/fastfetch
 rsync -av $HOME/repo/Shell_dot_file/linux/.config/nvim/ $HOME/.config/nvim
@@ -11,11 +9,15 @@ rsync -av $HOME/repo/Shell_dot_file/linux/.config/i3/ $HOME/.config/i3
 rsync -av $HOME/repo/Shell_dot_file/linux/.config/tmux/ $HOME/.config/tmux
 
 OS=$(uname)
-echo OS
+echo $OS
 if [[ "$OS" == "Darwin" ]]; then
+  rsync -av $HOME/repo/Shell_dot_file/mac/.config/zed/settings.json $HOME/.config/zed/settings.json
+  rsync -av $HOME/repo/Shell_dot_file/mac/.config/zed/keymap.json $HOME/.config/zed/keymap.json
   rsync -av $HOME/repo/Shell_dot_file/mac/.config/sketchybar/ $HOME/.config/sketchybar
   rsync -av $HOME/repo/Shell_dot_file/mac/.config/borders/ $HOME/.config/borders
-
+else
+  rsync -av $HOME/repo/Shell_dot_file/linux/.config/zed/settings.json $HOME/.config/zed/settings.json
+  rsync -av $HOME/repo/Shell_dot_file/linux/.config/zed/keymap.json $HOME/.config/zed/keymap.json
 fi
 
 ZSHRC="$HOME/.zshrc"

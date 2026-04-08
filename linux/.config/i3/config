@@ -28,6 +28,18 @@ set $ws8 "8"
 set $ws9 "9"
 set $ws10 "10"
 
+# Monitor assignment (when external is connected)
+workspace $ws1 output DP-2-3 eDP-1
+workspace $ws2 output DP-2-3 eDP-1
+workspace $ws3 output DP-2-3 eDP-1
+workspace $ws4 output DP-2-3 eDP-1
+workspace $ws5 output DP-2-3 eDP-1
+workspace $ws6 output eDP-1 DP-2-3
+workspace $ws7 output eDP-1 DP-2-3
+workspace $ws8 output eDP-1 DP-2-3
+workspace $ws9 output eDP-1 DP-2-3
+workspace $ws10 output eDP-1 DP-2-3
+
 # switch between workspaces
 bindsym $mod+Tab workspace next
 bindsym $mod+Shift+Tab workspace prev
@@ -295,8 +307,8 @@ bar {
 exec_always $HOME/.config/i3/scripts/import-gsettings
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec --no-startup-id dex --autostart --environment i3
-exec --no-startup-id ~/.screenlayout/monitor.sh
-exec --no-startup-id sleep 1 && feh --bg-fill /home/marian/Pictures/flower.png
+exec_always --no-startup-id ~/.screenlayout/monitor.sh
+exec_always --no-startup-id sleep 2 && feh --bg-fill /home/marian/Pictures/flower.png
 exec --no-startup-id xset s 480 dpms 600 600 600
 exec --no-startup-id xss-lock -l ~/.config/i3/scripts/blur-lock
 exec --no-startup-id /usr/bin/dunst

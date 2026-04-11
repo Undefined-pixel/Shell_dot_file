@@ -10,6 +10,7 @@ get_title() {
     xprop -id "$wid" _NET_WM_NAME 2>/dev/null \
         | sed 's/_NET_WM_NAME(UTF8_STRING) = "//;s/"$//' \
         | iconv -f UTF-8 -t UTF-8 -c \
+        | tr -d '"\\\000-\037' \
         | cut -c1-50
 }
 

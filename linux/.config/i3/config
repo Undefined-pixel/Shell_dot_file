@@ -17,6 +17,7 @@ floating_modifier $mod
 # Workspaces #
 ##############
 
+set $ws0 "0"
 set $ws1 "1"
 set $ws2 "2"
 set $ws3 "3"
@@ -26,19 +27,18 @@ set $ws6 "6"
 set $ws7 "7"
 set $ws8 "8"
 set $ws9 "9"
-set $ws10 "10"
 
 # Monitor assignment (when external is connected)
+workspace $ws0 output eDP-1
 workspace $ws1 output DP-2-3 eDP-1
 workspace $ws2 output DP-2-3 eDP-1
 workspace $ws3 output DP-2-3 eDP-1
 workspace $ws4 output DP-2-3 eDP-1
 workspace $ws5 output DP-2-3 eDP-1
-workspace $ws6 output eDP-1 DP-2-3
-workspace $ws7 output eDP-1 DP-2-3
-workspace $ws8 output eDP-1 DP-2-3
-workspace $ws9 output eDP-1 DP-2-3
-workspace $ws10 output eDP-1 DP-2-3
+workspace $ws6 output DP-2-3 eDP-1
+workspace $ws7 output DP-2-3 eDP-1
+workspace $ws8 output DP-2-3 eDP-1
+workspace $ws9 output DP-2-3 eDP-1
 
 # switch between workspaces
 bindsym $mod+Tab workspace next
@@ -54,7 +54,7 @@ bindcode $mod+15    workspace  $ws6
 bindcode $mod+16    workspace  $ws7
 bindcode $mod+17    workspace  $ws8
 bindcode $mod+18    workspace  $ws9
-bindcode $mod+19    workspace  $ws10
+bindcode $mod+19    workspace  $ws0
 
 # switch to workspace with numpad keys
 bindcode $mod+87 workspace $ws1
@@ -66,7 +66,7 @@ bindcode $mod+85 workspace $ws6
 bindcode $mod+79 workspace $ws7
 bindcode $mod+80 workspace $ws8
 bindcode $mod+81 workspace $ws9
-bindcode $mod+90 workspace $ws10
+bindcode $mod+90 workspace $ws0
 
 # switch to workspace with numlock numpad keys
 bindcode $mod+Mod2+87 workspace $ws1
@@ -78,7 +78,7 @@ bindcode $mod+Mod2+85 workspace $ws6
 bindcode $mod+Mod2+79 workspace $ws7
 bindcode $mod+Mod2+80 workspace $ws8
 bindcode $mod+Mod2+81 workspace $ws9
-bindcode $mod+Mod2+90 workspace $ws10
+bindcode $mod+Mod2+90 workspace $ws0
 
 # move focused container to workspace
 bindcode $mod+Shift+10    move container to workspace  $ws1
@@ -90,7 +90,7 @@ bindcode $mod+Shift+15    move container to workspace  $ws6
 bindcode $mod+Shift+16    move container to workspace  $ws7
 bindcode $mod+Shift+17    move container to workspace  $ws8
 bindcode $mod+Shift+18    move container to workspace  $ws9
-bindcode $mod+Shift+19    move container to workspace  $ws10
+bindcode $mod+Shift+19    move container to workspace  $ws0
 
 # move focused container to workspace with numpad keys
 bindcode $mod+Shift+Mod2+87     move container to workspace  $ws1
@@ -102,7 +102,7 @@ bindcode $mod+Shift+Mod2+85     move container to workspace  $ws6
 bindcode $mod+Shift+Mod2+79     move container to workspace  $ws7
 bindcode $mod+Shift+Mod2+80     move container to workspace  $ws8
 bindcode $mod+Shift+Mod2+81     move container to workspace  $ws9
-bindcode $mod+Shift+Mod2+90     move container to workspace  $ws10
+bindcode $mod+Shift+Mod2+90     move container to workspace  $ws0
 
 bindcode $mod+Shift+87   move container to workspace  $ws1
 bindcode $mod+Shift+88   move container to workspace  $ws2
@@ -113,7 +113,7 @@ bindcode $mod+Shift+85   move container to workspace  $ws6
 bindcode $mod+Shift+79   move container to workspace  $ws7
 bindcode $mod+Shift+80   move container to workspace  $ws8
 bindcode $mod+Shift+81   move container to workspace  $ws9
-bindcode $mod+Shift+90   move container to workspace  $ws10
+bindcode $mod+Shift+90   move container to workspace  $ws0
 
 ###############
 # Keybindings #
@@ -165,10 +165,10 @@ bindsym $mod+p exec --no-startup-id ~/.config/i3/scripts/audio-device-switch
 # Focus  #
 ##########
 
-bindsym $mod+j focus left
-bindsym $mod+k focus down
-bindsym $mod+b focus up
-bindsym $mod+o focus right
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
 
 bindsym $mod+Left focus left
 bindsym $mod+Down focus down
@@ -217,8 +217,8 @@ bindsym $mod+Ctrl+h split h
 bindsym $mod+Ctrl+v split v
 bindsym $mod+f fullscreen toggle
 bindsym $mod+s layout stacking
-bindsym $mod+t layout tabbed
-bindsym $mod+Shift+s layout toggle split
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
 bindsym $mod+Shift+space floating toggle
 
 ##############

@@ -30,8 +30,7 @@ return {
 	pane_focus_follows_mouse = false,
 	mouse_bindings = mb,
 	--  leader = { key = 'VoidSymbol', timeout_milliseconds = 1000 },
-	-- Super+Shift Kombis an i3 durchreichen
-	allow_win_super_key = true,
+	-- Super+Shift Kombis werden standardmäßig an i3 durchgereicht
 	keys = {
 		--    {
 		--      key = 'c',

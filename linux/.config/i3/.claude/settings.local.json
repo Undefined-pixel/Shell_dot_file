@@ -1,0 +1,16 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(pactl list *)",
+      "Read(//usr/lib/modules/**)",
+      "Bash(lsmod)",
+      "Bash(dmesg)",
+      "Bash(journalctl -b 0 --no-pager)",
+      "Bash(journalctl -b 0 --user -u wireplumber.service --no-pager)",
+      "Read(//proc/asound/**)",
+      "Read(//usr/share/alsa/ucm2/**)",
+      "Read(//usr/share/alsa/ucm2/conf.d/sof-hda-dsp/**)",
+      "Bash(aplay -l)"
+    ]
+  }
+}

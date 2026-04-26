@@ -3,3 +3,6 @@
 
 -- Use system clipboard so yank works in browser
 vim.opt.clipboard = "unnamedplus"
+
+-- Show absolute line numbers instead of relative
+vim.opt.relativenumber = false

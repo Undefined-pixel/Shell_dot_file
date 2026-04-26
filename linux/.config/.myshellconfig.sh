@@ -301,6 +301,13 @@ if command -v fzf &>/dev/null; then
 fi
 
 
+# ~~~~~~~~~~~~~~~markdown viewer~~~~~~~~~~~~~~~~~~~~~~~~
+function md() {
+  local file="${1:?Kein Dateiname angegeben}"
+  local out="/tmp/$(basename "$file").html"
+  lowdown "$file" -o "$out" || return 1
+  xdg-open "$out"
+}
 
 # ~~~~~~~~~~~~~~~info~~~~~~~~~~~~~~~~~~~~~~~~
 if [[ -z "$TMUX" ]]; then

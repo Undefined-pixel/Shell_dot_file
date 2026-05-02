@@ -10,7 +10,11 @@
       "Read(//proc/asound/**)",
       "Read(//usr/share/alsa/ucm2/**)",
       "Read(//usr/share/alsa/ucm2/conf.d/sof-hda-dsp/**)",
-      "Bash(aplay -l)"
+      "Bash(aplay -l)",
+      "Bash(wpctl set-default *)",
+      "Bash(pactl info *)",
+      "Bash(pactl get-default-sink *)",
+      "Bash(bash /home/marian/.config/i3/scripts/audio-device-switch)"
     ]
   }
 }

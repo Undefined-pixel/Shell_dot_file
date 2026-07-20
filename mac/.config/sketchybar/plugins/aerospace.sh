@@ -1,23 +1,25 @@
 #!/usr/bin/env bash
 
-# make sure it's executable with:
-# chmod +x ~/.config/sketchybar/plugins/aerospace.sh
+export PATH="/opt/homebrew/bin:/usr/local/bin:$PATH"
 
-#!/usr/bin/env bash
-FOCUSED_WORKSPACE=$(aerospace list-workspaces --focused)
+FOCUSED_WORKSPACE=$(/opt/homebrew/bin/aerospace list-workspaces --focused)
 
 if [ "$1" = "$FOCUSED_WORKSPACE" ]; then
-  # Aktiver Workspace — helles Grau, dunkler Text
-  sketchybar --set space.$1 \
-    background.color=0xffaaaaaa \
+  # Aktiver Workspace — helles Highlight
+  /opt/homebrew/bin/sketchybar --set space.$1 \
+    background.color=0xff444444 \
     background.drawing=on \
-    icon.color=0xff2b2b2b \
-    label.color=0xff2b2b2b
+    background.border_color=0xffaaaaaa \
+    background.border_width=1 \
+    background.corner_radius=5 \
+    icon.color=0xffffffff \
+    label.color=0xffffffff
 else
-  # Inaktiver Workspace — transparent wie die Bar
-  sketchybar --set space.$1 \
+  # Inaktiver Workspace — transparent
+  /opt/homebrew/bin/sketchybar --set space.$1 \
     background.color=0x00000000 \
     background.drawing=off \
+    background.border_width=0 \
     icon.color=0xffaaaaaa \
     label.color=0xffaaaaaa
 fi
